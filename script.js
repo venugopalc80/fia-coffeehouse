@@ -15,10 +15,14 @@ document.querySelectorAll('.desktop-nav a').forEach(link => {
 });
 
 const header = document.querySelector('.site-header');
-let lastY = window.scrollY;
 window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  if (y > 40) header?.classList.add('scrolled');
+  if (window.scrollY > 40) header?.classList.add('scrolled');
   else header?.classList.remove('scrolled');
-  lastY = y;
 }, { passive: true });
+
+document.querySelectorAll('[data-whatsapp]').forEach(link => {
+  link.addEventListener('click', () => {
+    const message = encodeURIComponent('Hi FIA, I’d like to ask about the coffeehouse and florals.');
+    link.href = `https://wa.me/447510007001?text=${message}`;
+  });
+});
